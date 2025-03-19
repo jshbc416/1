@@ -1,0 +1,44 @@
+from test import *
+a = input()
+win = 0
+lose = 0
+equal = 0
+mant = """
+-----------------------------------
+s - 가위
+r - 바위
+p - 보
+e - 게임종료
+원하는 선택지에 해당하는 알파벳을 입력하세요
+------------------------------------"""
+if a != "혼자" and a != "같이":
+    while True:
+        print("다시")
+        a = input()
+        if a == "혼자" or a == "같이":
+            c = a
+            print("ㅇㅋ")
+            break
+else:
+    c = a
+    print("ㅇㅋ")
+if a == "혼자":
+    m = ""
+    if m != "e":
+        while True:
+            print(mant)
+            player_result = player_choice(mant)
+            m = player_result
+            if m == "e":
+                print(f"게임 결과는 이긴 횟수:{win}, 진 횟수{lose}, 비긴 횟수{equal} 입니다.")
+                break
+            robot_result = robot_choice(mant)
+            print(f"로봇은 {robot_result}을 선택했습니다.")
+            r = 비교(player_result, robot_result)
+            if r == "이김":
+                win += 1
+            elif r == "비김":
+                equal += 1
+            else:
+                lose += 1
+            print(r)
