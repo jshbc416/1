@@ -1,0 +1,19 @@
+from test import *
+count = 0
+player,computer = input_ox()
+board = ['*' for i in range(9)]
+display_board(board)
+while True:
+    count += 1
+    print(f"{count}번재 반복입니다.")
+    board[input_position(board)] = player
+    display_board(board)
+    if victory(board,player):
+        print("님이 이겻에욥")
+        exit()
+    board[random_pos(board)] = computer
+    display_board(board)
+    if victory(board,computer):
+        print("님이 졋어욥")
+        exit()
+
