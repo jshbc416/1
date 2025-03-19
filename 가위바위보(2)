@@ -1,0 +1,39 @@
+import random
+def player_choice(x):
+    a = input()
+    if a != "s" and a != "r" and a != "p" and a != "e":
+        while True:
+            print("다시")
+            print(x)
+            a = input()
+            if a == "s" or a == "r" or a == "p" or a == "e":
+                print("ㅇㅋ")
+                return a
+                break
+    else:
+        print("ㅇㅋ")
+        return a
+def robot_choice(x):
+    return random.choice(["r","s","p"])
+def 비교(x,y):
+    if x == "s":
+        if y == "s":
+            return "비김"
+        elif y == "r":
+            return "짐"
+        else:
+            return "이김"
+    elif x == "r":
+        if y == "s":
+            return "이김"
+        elif y == "r":
+            return "비김"
+        else:
+            return "짐"
+    else:
+        if y == "s":
+            return "짐"
+        elif y == "r":
+            return "이김"
+        else:
+            return "비김"
