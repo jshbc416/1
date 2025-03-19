@@ -1,0 +1,50 @@
+import random
+def input_ox():
+    li = ["o","x","O","X"]
+    count = 2 # 1이면 통과 2면 다시
+    while count == 2:
+        ox = input("o 아니면 x를 선택해주세욥")
+        if ox in li:
+            count == 1
+            if ox == "o" or ox == "O":
+                return li[0], li[1]
+            else:
+                return li[1], li[0]
+        else:
+            count == 2
+            print("정확히 입력해주세욥")
+def display_board(board):
+    print("-" * 25)
+    print("|" + "   " + board[0] + "   " + "|" + "   " + board[1] + "   " + "|" + "   " + board[2] + "   " + "|")
+    print("-" * 25)
+    print("|" + "   " + board[3] + "   " + "|" + "   " + board[4] + "   " + "|" + "   " + board[5] + "   " + "|")
+    print("-" * 25)
+    print("|" + "   " + board[6] + "   " + "|" + "   " + board[7] + "   " + "|" + "   " + board[8] + "   " + "|")
+    print("-" * 25)
+def input_position(board):
+    while True:
+        pos = input("좌표를 입력해주세욥(1 ~ 9)")
+        pos = int(pos)
+        if 1 <= pos and pos <= 9:
+            if board[pos - 1] == "*":
+                return pos - 1
+            else:
+                print("이미 입력되엇어욥")
+        else:
+            print("1 부터 9 까지 값을 입력해주세요")
+def victory(board,player):
+    for i in range(3):
+        if board[3*i] == board[3*i+1] and board[3*i+1] == board[3*i+2]  and player == board[3*i+2]:
+            return True
+        elif board[i] == board[i+3] and board[i+3] == board[i+6] and player == board[i+6]:
+            return False
+    if board[0] == board[4] and board[4] == board[8] and player == board[0]:
+        return True
+    elif board[2] == board[4] and board[4] == board[6] and player == board[6]:
+        return True
+    else:
+        return False
+def random_pos(board):
+    while True:
+        pos3 = random.randrange(1,10)
+        return pos3-1
