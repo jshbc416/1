@@ -15,25 +15,48 @@ def player_choice(x):
         return a
 def robot_choice(x):
     return random.choice(["r","s","p"])
-def 비교(x,y):
-    if x == "s":
-        if y == "s":
-            return "비김"
-        elif y == "r":
-            return "짐"
+def 비교(x,y,two = True):
+    if two == True:
+        if x == "s":
+            if y == "s":
+                return "비김"
+            elif y == "r":
+                return "짐"
+            else:
+                return "이김"
+        elif x == "r":
+            if y == "s":
+                return "이김"
+            elif y == "r":
+                return "비김"
+            else:
+                return "짐"
         else:
-            return "이김"
-    elif x == "r":
-        if y == "s":
-            return "이김"
-        elif y == "r":
-            return "비김"
-        else:
-            return "짐"
+            if y == "s":
+                return "짐"
+            elif y == "r":
+                return "이김"
+            else:
+                return "비김"
     else:
-        if y == "s":
-            return "짐"
-        elif y == "r":
-            return "이김"
+        if x == "s":
+            if y == "s":
+                return 3
+            elif y == "r":
+                return 2
+            else:
+                return 1
+        elif x == "r":
+            if y == "s":
+                return 1
+            elif y == "r":
+                return 3
+            else:
+                return 2
         else:
-            return "비김"
+            if y == "s":
+                return 2
+            elif y == "r":
+                return 1
+            else:
+                return 3
