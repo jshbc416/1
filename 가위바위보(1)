@@ -1,5 +1,5 @@
 from test import *
-a = input()
+a = input("혼자 할지 같이 할지를 선택하세요")
 win = 0
 lose = 0
 equal = 0
@@ -42,3 +42,35 @@ if a == "혼자":
             else:
                 lose += 1
             print(r)
+elif a == "같이":
+    win1 = 0
+    lose1 = 0
+    equal = 0
+    win2 = 0
+    lose2 = 0
+    while True:
+        print(mant)
+        print("첫번째 플레이어 선택")
+        first_player = player_choice(mant)
+        print(mant)
+        print("두번째 플레이어 선택")
+        last_player = player_choice(mant)
+        if first_player == "e" or last_player == "e":
+            print(f"게임 결과는\n "
+                  f"첫번쨰 플레이어: 이긴횟수{win1},진횟수{lose1} 입니다\n"
+                  f"두번째 플레이어: 이긴횟수{win2},진횟수{lose2} 입니다,\n"
+                  f"비긴횟수는 {equal}입니다")
+            break
+        result = 비교(first_player,last_player,False)
+        if result ==  3:
+            equal += 1
+        elif result == 1:
+            win1 += 1
+            lose2 += 1
+        else:
+            lose1 += 1
+            win2 += 1
+        print(f"현재 결과는\n "
+              f"첫번쨰 플레이어: 이긴횟수{win1},진횟수{lose1} 입니다\n"
+              f"두번째 플레이어: 이긴횟수{win2},진횟수{lose2} 입니다,\n"
+              f"비긴횟수는 {equal}입니다")
