@@ -1,0 +1,18 @@
+from collections import deque
+def DFS(matrix):
+    s = deque()
+    s.append(0)
+    visit = [False] * len(matrix)
+    visit[0] = True
+    li = []
+    while s:
+        a = s.pop()
+        li.append(a + 1)
+        print(s)
+        for i, j in enumerate(matrix[a]):
+            if j and not visit[i]:
+                s.append(i)
+                visit[i] = True
+    return li
+amatrix = [[0,1,1,0,0],[1,0,1,1,0],[1,1,0,0,0],[0,1,0,0,1],[0,0,0,1,0]]
+print(DFS(amatrix))
