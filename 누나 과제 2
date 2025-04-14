@@ -1,0 +1,31 @@
+wish_list = []
+choice_list = ['1','2','3','4']
+
+while True:
+    print("****** 위시 리스트 관리 프로그램 *****")
+    print('1. 살 물품 추가')
+    print('2. 살 물품 삭제')
+    print('3. 리스트 확인')
+    print('4. 프로그램 종료')
+
+    choice = input('번호를 입력하세요. (1~4):')
+
+    if (choice in choice_list):
+        if choice == '1':
+            item = input("추가 할 물품")
+            wish_list.append(item)
+            print("항목이 추가 되었습니다.")
+        elif choice == '2':
+            item = input("삭제 할 일")
+            if (item in wish_list):
+                wish_list.remove(item)
+                print("항목이 삭제 되었습니다.")
+            else:
+                print("항목이 리스트에 존재하지 않습니다.")
+        elif choice == '3':
+            print(wish_list)
+        elif choice == '4':
+            print("프로그램이 종료 되었습니다.")
+            break
+    else:
+        print('1부터 4까지 중에서 선택해 주세요.')
