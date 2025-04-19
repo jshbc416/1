@@ -1,0 +1,85 @@
+ask = """
+은행 계좌 관리 프로그램
+---------------------------
+원하는 선택지의 번호를 입력하세요
+1. 계좌 조회
+2. 입금
+3. 출금
+4. 계좌 제작
+5. 프로그램 실행 종료
+---------------------------
+ """
+bank_name = [] # 계좌 번호
+bank_passward = [] # 계좌 비밀번호
+bank_host = [] # 계좌주 이름
+bank_money = [] # 잔액
+bank_result = [] # 결과
+
+def search(ss):
+    time = 5
+    while time > 0:
+        search_iinput = input(f"비밀번호를 입력해주세요 {time}번 남았습니다")
+        if search_iinput == bank_passward[ss]:
+            return (f" 계좌번호 = {bank_name[ss]} \n 계좌주이름 = {bank_host[ss]} \n 현재 잔액 = {bank_result[ss]} \n입출금 내역 = {bank_result[ss]} ")
+        else:
+            time -= 1
+    return ("비밀번호가 모두 틀렸습니다")
+def put(p):
+    putting = int(input("얼마를 입금 할지 입력하세요"))
+    bank_money[p] = bank_money[p] + putting
+    print(f"입금이 완료 되었습니다. 잔액은{bank_money[p]}")
+
+def out(u):
+    outting = int(input("얼마를 출금 할지 입력하세요"))
+    bank_money[u] = bank_money[u] - outting
+    print(f"출금이 완료 되었습니다. 잔액은{bank_money[u]}")
+
+while True:
+    print(ask)
+    asking = input()
+    while asking != '1' and asking != '2' and asking != '3' and asking != '4' and asking != '5':
+        print(f"제대로 입력해주세요 \n {ask}")
+        asking = input()
+    result = asking
+
+    if result == '5':
+        break
+
+    elif result == '1':
+        print("계좌 조회를 선택하셨습니다.")
+        s = input("어떤 계좌를 조회할지 입력해 주십시오(4자리수)")
+        if s in bank_name:
+            si = bank_name.index(s)
+            print(si)
+            search_result = search(si)
+            print(search_result)
+        else:
+             print("입력하신 계좌가 없습니다")
+
+    elif result == '2':
+        j = input("어떤 계좌에다가 입금할지 계좌 번호를 입력해 주십시오")
+        if j in bank_name:
+            ji = bank_name.index(j)
+            put(ji)
+        else:
+             print("입력하신 계좌가 없습니다")
+
+    elif result == '3':
+        o = input("어떤 계좌에다가 출금할지 계좌 번호를 입력해 주십시오")
+        if o in bank_name:
+            oi = bank_name.index(o)
+            out(oi)
+        else:
+             print("입력하신 계좌가 없습니다")
+
+    elif result == '4':
+        n = input("만들고 싶은 계좌번호를 입력하세요")
+        while len(n) != 4:
+            print("4자리 수여야 합니다")
+            n = input("만들고 싶은 계좌번호를 입력하세요")
+        p = input("비밀번호를 만들어 주세요")
+        h = input("본인의 서명을 입력하세요")
+        bank_name.append(n)
+        bank_passward.append(p)
+        bank_host.append(h)
+        print("계좌가 성공적으로 만들어 졌습니다")
