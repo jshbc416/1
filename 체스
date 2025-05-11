@@ -1,0 +1,15 @@
+def makemap():
+    maps = [['.' for _ in range(8)] for _ in range(8)]
+    return maps
+
+map1 = makemap()
+x = y = 0
+map1[x][y] = 'p'
+while True:
+    for i in map1:
+        print(i)
+    mx, my = map(int,input().split())
+    map1[x][y] = '.'
+    map1[mx][my] = 'p'
+    x = mx
+    y = my
