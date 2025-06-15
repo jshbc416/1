@@ -1,0 +1,31 @@
+import pygame
+import sys
+from pygame.locals import QUIT, MOUSEMOTION
+
+
+pygame.init()
+pygame.display.set_caption("TEST")
+Surface = pygame.display.set_mode((600,600))
+FPSCLOCk = pygame.time.Clock()
+font = pygame.font.SysFont(None , 70, False , False)
+
+def main():
+    while True:
+        Surface.fill((255,255,255))
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+
+        pygame.draw.circle(Surface, (0,0,100), (300,300), 100, 5)
+
+        pygame.draw.rect(Surface, (0, 100, 0), (285,285,30,30))
+
+        mouse_pos = pygame.mouse.get_pos()
+        text = font.render(str(mouse_pos), True, "black", None)
+        Surface.blit(text,[100,100])
+        pygame.display.update()
+        FPSCLOCk.tick(30)
+
+if __name__ == '__main__':
+    main()
